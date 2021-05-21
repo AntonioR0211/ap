@@ -1,6 +1,5 @@
 import pygame as pg
 import pyautogui as ag
-import time, os
 from tkinter import *
 
 i = 1
