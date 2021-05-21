@@ -4,12 +4,14 @@ from tkinter import *
 
 # For Infinite Loop
 i = 1
-
+# First Time Opening
+t = 1
 # Define Menu For Easy Pause Access In Game
 def menu():
     game = 0
     window = Tk()
     myfont = ("Roboto", 90, "normal")
+    alert = ("Roboto", 20, "italic")
     title=Label(window, text="Art Studio", font=myfont)
     title.place(x=130, y=10)
 
@@ -30,12 +32,18 @@ def menu():
     help6.place(x=450, y=325)
     help8=Label(window, text="Space To Return To Controls")
     help8.place(x=450, y=250)
-    help9=Label(window, text="Escape To Exit")
+    help9=Label(window, text="Escape To Quick Exit")
     help9.place(x=450, y=350)
+    # Don't Want To Annoy Player So Removes Text After Seeing It Once
+    if t == 1:
+            help9=Label(window, text="READ CONTROLS TO UNDERSTAND HOW TO PLAY", font=alert)
+            help9.place(x=50, y=375)
 
     # Confirm Button
     confirmbtn = Button(window, text="To Canvas", command=window.destroy)
-    confirmbtn.place(x=330, y=500)
+    confirmbtn.place(x=250, y=500)
+    exitbtn = Button(window, text="Exit Program", command=escape)
+    exitbtn.place(x=400, y=500)
 
     # Window Setup
     window.title("Art Studio")
@@ -44,6 +52,7 @@ def menu():
 
 # Exit Application
 def escape():
+    print("Thanks for Playing!")
     quit()
 
 # Begin Process
@@ -55,6 +64,7 @@ game = 1
 while i == 1:
     if game == 1:
         game = 0
+        t = 0
         # Beginning User Input
         pen_colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple', 'black']
         background = ("White")
@@ -74,7 +84,7 @@ while i == 1:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     pg.quit()
-                    quit()
+                    escape()
                 # Drawing and Erasing
                 elif pg.mouse.get_pressed() == (1, 0, 0):
                     mouse_pos = pg.mouse.get_pos()
