@@ -2,8 +2,10 @@ import pygame as pg
 import pyautogui as ag
 from tkinter import *
 
+# For Infinite Loop
 i = 1
 
+# Define Menu For Easy Pause Access In Game
 def menu():
     game = 0
     window = Tk()
@@ -35,17 +37,21 @@ def menu():
     confirmbtn = Button(window, text="To Canvas", command=window.destroy)
     confirmbtn.place(x=330, y=500)
 
+    # Window Setup
     window.title("Art Studio")
     window.geometry("800x600+10+10")
     window.mainloop()
 
+# Exit Application
 def escape():
     quit()
 
+# Begin Process
 menu()
 
 game = 1
 
+# Beginning of Art Section
 while i == 1:
     if game == 1:
         game = 0
